@@ -13,3 +13,4 @@ def split_string(string: str, characters: str = '') -> list[str]:
 #print(string.split("o")) desired output:['cia', ' c', 'me va?']
 
 split_string("ciao", "o")
+#make buffer of substring and save buffers
