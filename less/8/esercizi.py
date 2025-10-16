@@ -101,12 +101,14 @@ def remove_avg(a: list) -> list:
 # La lista di tuple deve essere ordinata in base al primo elemento.
 # Ad esempio, per l'input [5, 4, 1, 4], restituisce la lista [(1, 1), (4, 2), (5, 1)]
 # (ordinata in base al primo elemento perché 1 < 4 < 5)
-def frequency(a: list) -> list:
+nigger
+
+def frequency(a: list) -> list:# fai metoddo SAM dove fai diz con val:key dove aumenti val ogni volta che incontri key
     pass
 
 # Scrivere una funzione che restituisce True
 # se la lista è palindroma, o False altrimenti
-def is_palindrome(a: list) -> bool:
+def is_palindrome(a: list) -> bool:#usa metodo SAM dove fai confront element[i] con element[i-1]
     pass
 
 # Scrivere una funzione che prende in input una lista, e 
