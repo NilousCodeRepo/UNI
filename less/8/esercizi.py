@@ -1,62 +1,3 @@
-Vai ai contenuti principali
-Google ClassroomClassroom
-Fondamenti di programmazione (a.a. 2025-26)Canale 1 [A-L]
-Home page
-Calendario
-I tuoi corsi
-Da fare
-M
-Metodi Matematici per Informatica 2025/2026
-canale 1
-I
-Inglese livello B2
-F
-Fondamenti di programmazione (a.a. 2025-26)
-Canale 1 [A-L]
-Corsi archiviati
-Impostazioni
-Esercitazione 3 - tuple - liste
-Dettagli del materiale
-Esercitazione 3 - tuple - liste
-Daniele Friolo
-•
-15:38
-Gli esercizi iniziano dopo la funzione check_test, che potete essere usare per testare le funzioni che avete scritto.
-esercizi03.py
-Testo
-Commenti sul corso
-Aggiungi commento sul corso…
-
-# Ignorare le righe fino alla 31
-from typing import Any, Callable, List
-import sys
-
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-# Esegue un test e controlla il risultato
-def check_test(func: Callable, expected: Any, *args: List[Any]):
-    func_str = func.__name__
-    args_str = ', '.join(repr(arg) for arg in args)
-    try:
-        result = func(*args)
-        result_str = repr(result)
-        expected_str = repr(expected)
-        test_outcome = "succeeded" if (result==expected) else "failed"
-        color = bcolors.OKGREEN if (result==expected) else bcolors.FAIL
-        print(f'{color}Test on {func_str} on input {args_str} {test_outcome}. Output: {result_str} Expected: {expected_str}')
-    except BaseException as error:
-        error_str = repr(error)
-        print(f'{bcolors.FAIL}ERROR: {func_str}({args_str}) => {error_str}')
-
 # Scrivere una funzione che controlla la validita' di una password.
 # La password deve avere:
 # - Almeno una lettera fra [a-z] e una lettera fra [A-Z]
@@ -101,7 +42,6 @@ def remove_avg(a: list) -> list:
 # La lista di tuple deve essere ordinata in base al primo elemento.
 # Ad esempio, per l'input [5, 4, 1, 4], restituisce la lista [(1, 1), (4, 2), (5, 1)]
 # (ordinata in base al primo elemento perché 1 < 4 < 5)
-nigger
 
 def frequency(a: list) -> list:# fai metoddo SAM dove fai diz con val:key dove aumenti val ogni volta che incontri key
     pass
@@ -128,41 +68,3 @@ def is_sorted(a: list) -> bool:
 # Si assuma che la lista abbia almeno sempre 3 elementi.
 def is_sorted_half(a: list) -> bool:
     pass
-
-# Test funzioni
-check_test(check_pwd, False, "a")
-check_test(check_pwd, False, "000000000000000000")
-check_test(check_pwd, False, "almeno6")
-check_test(check_pwd, False, "Aa@09asng2/")
-check_test(check_pwd, True, "Aa@09asng2")
-check_test(tuple_ex, (3, -2, 1), (-1, -1, 2))
-check_test(intersect, [2, 3], [1, 2, 3], [2, 3, 4])
-check_test(intersect, [], [1, 2, 3], [10, 11, 12])
-check_test(intersect, [], [1, 2, 3], [])
-check_test(intersect, [], [], [1, 2, 3])
-check_test(remove_avg, [10], [5, 3, 10, 0])
-check_test(remove_avg, [20, 1000], [5, 20, 10, 1000])
-check_test(remove_avg, [], [])
-check_test(frequency, [(1, 1), (4, 2), (5, 1)], [5, 4, 1, 4])
-check_test(frequency, [(0, 1), (23, 3), (99, 1)], [23, 99, 0, 23, 23])
-check_test(is_palindrome, True, [])
-check_test(is_palindrome, True, [1])
-check_test(is_palindrome, True, [1, 2, 8, 2, 1])
-check_test(is_palindrome, True, [1, 2, 8, 8, 2, 1])
-check_test(is_palindrome, False, [1, 3, 8, 8, 2, 1])
-check_test(is_sorted, True, [1])
-check_test(is_sorted, True, [1, 1, 1])
-check_test(is_sorted, True, [1, 2, 3, 4])
-check_test(is_sorted, True, [4, 3, 2, 1])
-check_test(is_sorted, True, [1, 1, 2, 3, 3, 4])
-check_test(is_sorted, True, [4, 4, 3, 2, 2, 1])
-check_test(is_sorted, False, [1, 1, 3, 3, 2])
-check_test(is_sorted, False, [4, 4, 3, 3, 5])
-check_test(is_sorted_half, False, [1, 2, 3])
-check_test(is_sorted_half, False, [3, 2, 1])
-check_test(is_sorted_half, True, [1, 3, 2])
-check_test(is_sorted_half, True, [3, 1, 2])
-check_test(is_sorted_half, True, [1, 2, 5, 6, 8, 9, 3])
-
-esercizi03.py
-Visualizzazione di esercizi03.py.
