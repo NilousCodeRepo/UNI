@@ -1,7 +1,0 @@
-    casa cane gatto topo
-    paperino
-    ragno topo
-    cane		 cip          cip
-    casa cane gatto topo
-    paperino	   ragno topo
-    cane cip				   cip

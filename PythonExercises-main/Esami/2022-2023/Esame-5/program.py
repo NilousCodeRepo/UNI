@@ -1,1 +1,0 @@
-program.vuoto.py
