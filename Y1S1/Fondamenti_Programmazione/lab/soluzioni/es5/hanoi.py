@@ -1,0 +1,5 @@
+def hanoi(n: int)  -> int:
+    if n==1:
+        return 1
+    return 2*hanoi(n-1) +1
+    

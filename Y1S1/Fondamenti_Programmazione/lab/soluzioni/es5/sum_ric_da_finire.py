@@ -3,5 +3,8 @@ def sum_recursive(n: int) -> int:
     #caso base
     if n == 0:
         return 0
-    m = n-1
-    return sum_recursive(n) + sum_recursive(m)
+    else:
+        return n + sum_recursive(n-1)
+        
+n:int = 3
+print(sum_recursive(n))
