@@ -1,38 +1,3 @@
-Vai ai contenuti principali
-Google ClassroomClassroom
-Fondamenti di programmazione (a.a. 2025-26)Canale 1 [A-L]
-Home page
-Calendario
-I tuoi corsi
-Da fare
-M
-Metodi Matematici per Informatica 2025/2026
-canale 1
-I
-Inglese livello B2
-F
-Fondamenti di programmazione (a.a. 2025-26)
-Canale 1 [A-L]
-Corsi archiviati
-Impostazioni
-Esercitazione 2 - funzioni - stringhe - liste
-
-from typing import Any, Callable, List
-
-
-# Test per le liste
-def print_test(func: Callable, *args: List[Any]):
-    func_str = func.__name__
-    args_str = ', '.join(repr(arg) for arg in args)
-    try:
-        result = func(*args)
-        result_str = repr(result)
-        print(f'{func_str}({args_str}) => {result_str}')
-    except BaseException as error:
-        error_str = repr(error)
-        print(f'ERROR: {func_str}({args_str}) => {error_str}')
-
-
 ################################################################################
 # Funzioni
 ################################################################################
@@ -144,27 +109,3 @@ def reverse_list(elements: list) -> list:
 # Usare solo costrutti del linguaggio e non librerie.
 def flatten_list(elements: list) -> list:
     pass
-
-
-# Test funzioni
-print_test(sum_squares, [1, 2, 3])
-print_test(max_element, [1, 2, 3, -1, -2])
-print_test(max_element, [-1, -2])
-print_test(max_element, [])
-print_test(remove_duplicates, [1, 2, 3, 2, 3])
-print_test(reverse_list, [1, 2, 3])
-print_test(flatten_list, [1, [2, 3]])
-print_test(flatten_list, [1, [2, [3, 4]]])
-
-Esercitazione2.py
-Visualizzazione di Esercitazione2.py.
-Esercitazione 2 - funzioni - stringhe - liste
-Daniele Friolo
-•
-8 ott (Ultima modifica: 9 ott)
-Esercitazione2.py
-Testo
-SoluzioniEx2.py
-Testo
-Commenti sul corso
-Aggiungi commento sul corso…
