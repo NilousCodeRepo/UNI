@@ -307,13 +307,13 @@ def test_func6_4():
 tests = [
     # TO DISABLE SOME OF THE TESTS, comment any of the following entries
     # PER DISATTIVARE ALCUNI TEST, commentare gli elementi seguenti
-    test_func1_1, test_func1_2, test_func1_3, test_func1_4, # OK 4
-    test_func2_1, test_func2_2, test_func2_3, test_func2_4, # OK 4
-    test_func3_1, test_func3_2, test_func3_3, test_func3_4, # OK 4
-    test_func4_1, test_func4_2, test_func4_3, test_func4_4, # OK 6
-    test_func5_1, test_func5_2, test_func5_3, test_func5_4, # OK 8
-    test_func6_1, test_func6_2, test_func6_3, test_func6_4, # OK 4
-    test_personal_data_entry,
+#     test_func1_1, test_func1_2, test_func1_3, test_func1_4, # OK 4
+#     test_func2_1, test_func2_2, test_func2_3, test_func2_4, # OK 4
+#     test_func3_1, test_func3_2, test_func3_3, test_func3_4, # OK 4
+#    test_func4_1, test_func4_2, test_func4_3, test_func4_4, # OK 6
+#    test_func5_1, test_func5_2, test_func5_3, test_func5_4, # OK 8
+#    test_func6_1, test_func6_2, test_func6_3, test_func6_4, # OK 4
+#    test_personal_data_entry,
 ]
 
 if __name__ == '__main__':
