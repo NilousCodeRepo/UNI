@@ -5,3 +5,6 @@ def prime_prim(n:int, d = 2) -> int:
         return False
     else:
         return (n % d != 0) and prime_prim(n,d+1)
+
+n = 10
+print(prime_prim(n))

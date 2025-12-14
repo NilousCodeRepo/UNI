@@ -9,7 +9,7 @@ def max_recursive(l: list[int]) -> int:
         m = min(l)
         l.remove(m)
 '''
-return max(l[0],max_recursive(l[1:len(l>)]))
+return max(l[0],max_recursive(l[1:len(l)]))
 
 '''        
     return max_recursive(l)#tolgo un elemento ogni volta

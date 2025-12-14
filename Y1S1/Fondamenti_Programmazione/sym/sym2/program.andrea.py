@@ -91,7 +91,7 @@ Si apra 'func2/input_1.txt per vedere l'input e
 def func2(input_file, output_file):
     pass
     # completa il codice della funzione
-    with open(input_file) as F:
+   with open(input_file) as F:
         M = [ [ int(x) for x in riga.split(',') ] for riga in F ]
     with open(output_file, mode='w', encoding='utf8') as F:
         print( *M, sep='\n', file=F)
@@ -166,10 +166,13 @@ def func4(textfile_in, textfile_out):
         cifre = cifre.replace('-', '')
         cifre = cifre.replace('+', '')
         return -len(cifre), float(elemento)
-    with open(textfile_in) as FIN:
+   
+	 with open(textfile_in) as FIN:
         numeri = FIN.read().split()
-    numeri.sort(key = criterio)
-    with open(textfile_out, mode='w') as FOUT:
+ 
+	 numeri.sort(key = criterio)
+    
+		with open(textfile_out, mode='w') as FOUT:
         print(*numeri, sep=', ', file=FOUT)
     return len(numeri)
 
@@ -204,7 +207,7 @@ def func5(input_filename):
     pass
     # completa il codice della funzione
     with open(input_filename) as FIN:
-        M = [ list(map(int, riga.split())) for riga in FIN ]
+        M = [ list(map(int, riga.split(g)) for riga in FIN ]
     W = len(M[0])
     H = len(M)
     return [ [  M[H-1-y][W-1-x]
