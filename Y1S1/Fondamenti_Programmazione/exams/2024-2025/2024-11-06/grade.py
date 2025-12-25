@@ -456,4 +456,4 @@ if __name__ == '__main__':
         print(f"{COL['GREEN']}Name: {program.name}\nSurname: {program.surname}\nStudentID: {program.student_id}{COL['RST']}")
     else:
         print('we should not arrive here the  matricola/student ID variable is not present in program.py')
-################################################################################
+#################################################################################

@@ -73,21 +73,22 @@ Ad esempio, se L0 = ['ab', 'o o'] e L1 = [2, 3] la funzione restituisce:
 'ababo oo oo o'.
 '''
 def func2(L0, L1):
-
-# L0 = ['ab', 'o o']
-# L1 = [2, 3]
-# print(func2(L0, L1))
-
+	result = ""
+	for i in range(len(L1)):
+		result += L0[i] * L1[i]
+	
+	return result
 
 # %% ----------------------------------- FUNC3 ------------------------- #
 '''  func3: 2 punti
 
-Si definisca una funzione func3(string_list1, string_list2) che prende
-in ingresso due liste di stringhe e restituisce una nuova lista di
-stringhe.
-La nuova lista è costituita da tutte quelle stringhe presenti in una
-delle due liste in ingresso che contengono come una sottostringa
-almeno una stringa o un inverso dell'altra lista.
+Si definisca una funzione func3(string_list1, string_list2) che:
+
+- Restituisce una nuova lista di stringhe tale che la nuova lista
+	è costituita da tutte quelle stringhe presenti in una delle due liste in 
+	ingresso che contengono come una sottostringa almeno una stringa o un 
+	inverso dell'altra lista.
+
 La lista risultante deve essere ordinata per numero di caratteri
 decrescente, in caso di parità, in ordine alfabetico.
 
@@ -104,30 +105,39 @@ Esempio: se string_list1=['shop', 'park', 'elichopter', 'cat', 'elephant'] e
 
 '''
 
-def func3(string_list1, string_list2):
-    ## Scrivi qui il tuo codice
-    pass
-
-
-# string_list1=['shop', 'park', 'elichopter', 'cat', 'elephant']
-# string_list2=['ark', 'contact', 'hop', 'mark']
-# print(func3(string_list1, string_list2))
+def func3(string_list1, string_list2):#non funziona
+	string_list3 = set()
+	
+	for s1 in string_list1:
+		for s2 in string_list2:
+			if (s1 in s2 or s2 in s1 or s1[::-1] in s2 or s2[::-1] in s1):
+				string_list3.add(s2) 
+		
+	return sorted(string_list3, key = lambda x: (-len(x), x) ) 
 
 # %% ----------------------------------- FUNC4 ------------------------- #
 """ func4: 4 punti
 
-Si definisca la funzione func4(D) che riceve in ingresso un
-dizionario, in cui ogni chiave è una stringa e il valore
-corrispondente è una collezione (un insieme, un dizionario, una lista,
-...).
-La funzione restituisce un elenco di liste, in cui ogni sottoelenco S
-corrisponde a un elemento del dizionario in ingresso e contiene quanto
-segue: - come primo elemento I0, la chiave dell'elemento del
-dizionario corrispondente - come secondo elemento I1, il valore
-dell'elemento del dizionario corrispondente.
+Si definisca la funzione func4(D) che:
+
+- Riceve in ingresso un dizionario, in cui ogni chiave è una stringa e il valore
+corrispondente è un contenitore 
+
+La funzione restituisce:
+
+- Un elenco di liste, in cui ogni sottoelenco S 
+	corrisponde a un elemento del dizionario in ingresso e contiene quanto
+	segue:
+		- Come primo elemento I0, la chiave dell'elemento del
+			dizionario corrispondente 
+		
+		- Come secondo elemento I1, il valore dell'elemento del dizionario corrispondente.
+
 Le liste interne sono ordinate in base alla lunghezza del secondo
 elemento I1 in ogni lista interna, in ordine inverso (dalla più lunga
-alla più corta).  Se le due liste interne hanno un secondo elemento
+alla più corta).  
+
+Se le due liste interne hanno un secondo elemento
 con la stessa lunghezza, vengono ordinati in base al valore del primo
 elemento I0 (in ordine alfabetico o numerico).
 
@@ -136,10 +146,10 @@ la funzione restituisce: [["f", (1, 2, 3)], ["a", ["h", "w"]], ["c", {"f":3, "g"
 """
 
 def func4(D):
-    ## Scrivi qui il tuo codice
-    pass
-# D = {"f":(1, 2, 3), "a":["h", "w"], "c":{"f":3, "g":[1,2]}}
-# print(func4(D)
+
+
+D = {"f":(1, 2, 3), "a":["h", "w"], "c":{"f":3, "g":[1,2]}}
+print(func4(D))
 
 # %% ----------------------------------- FUNC5 ------------------------- #
 """ func5: 8 punti

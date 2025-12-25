@@ -19,9 +19,9 @@ Attenzione! DEBUG=True nel grade.py per migliorare il debugging.
 Per testare correttamente la ricorsione è, però, necessario DEBUG=False.
 
 """
-nome       = "N"
-cognome    = "C"
-matricola  = "20"
+nome       = "Tudor"
+cognome    = "Ciupe"
+matricola  = "27464"
 
 
 #########################################
@@ -43,59 +43,62 @@ matricola  = "20"
 
 # %% -------------------------------- FUNC.1 -------------------------------- #
 ''' func1: 2 punti
-Si definisca la funzione func1(string_list1, string_list2) che riceve in
-ingresso due liste di stringhe e restituisce una nuova lista di stringhe
-contenente le stringhe presenti soltanto in una delle due liste in ingresso
-(ossia, che non compaiono in entrambe le liste). La lista in output
-dev'essere ordinata in ordine di lunghezza crescente e in caso di parità 
-in ordine alfabetico inverso.
+Si definisca la funzione func1(string_list1, string_list2) che:
+  - Riceve in ingresso due liste di stringhe
+
+  Restituisce una nuova lista di stringhe contenente le stringhe presenti soltanto in una
+  delle due liste in ingresso
+ 
+  La lista in output dev'essere:
+    - Ordinata in ordine di lunghezza crescente 
+      e in caso di parità 
+    - In ordine alfabetico inverso.
 '''
 def func1(string_list1, string_list2):
-    res_list = [string for string in string_list1 + string_list2 if (string in string_list1) ^ (string in string_list2)]
-    # for string in string_list1:
-    #     if string not in string_list2:
-    #         res_list.append(string)
-    # for string in string_list2:
-    #     if string not in string_list1:
-    #         res_list.append(string)
-    res_list.sort(reverse=True)  # alfabetico inverso
-    res_list.sort(key=len)  # lunghezza crescente (stabile)
-    return res_list
+  intersect = set(string_list1) & set(string_list2)
+  # a & a = 0 -> interset = {x : for each x in string_listI U string_listJ}
+  return sorted( [s for s in string_list1+string_list2 if s not in intersect],key=lambda x: (-len(x), x) ,reverse=True )
+  #a me serve 
+    #y = {string_listI U string_listJ} : y\{intersect}
 
 # %% -------------------------------- FUNC.2 -------------------------------- #
 ''' func2: 2 punti
-Si definisca una funzione funct2(path_to_file) che riceve in ingresso
-una stringa che rappresenta il percorso ad un file testuale. La funzione
-deve restituire il dizionario che associ ad ogni carattere nel testo il
-conteggio delle sue occorrenze.
+Si definisca una funzione funct2(path_to_file) che:
+  - Riceve in ingresso una stringa che rappresenta il percorso ad un file testuale.
+
+  La funzione deve restituire_
+    - Il dizionario che associ ad ogni carattere nel testo il conteggio delle sue occorrenze.
 
 Esempio:
   Il contenuto di func2_test_1.txt è:
-cat rat fat
-art
+    
+    cat rat fat
+    art
+
   L'output atteso dall'invocazione di func2('func2/func2_test_1.txt') è:
   {'c':1, 'a':4, 't':4, 'r':2, 'f':1, ' ':2, '\n':1}
 
 Nota:
   Aprire il file con encoding 'utf-8'.
 '''
-def func2(pathname):
-    with open(pathname, encoding='utf-8') as f:
-        text = f.read()
-        return { c: text.count(c) for c in text }
+def func2(path_to_file):
+  with open(path_to_file, mode = 'r', encoding = 'utf8') as F:
+    read_file = F.read()
+    return {c: read_file.count(c) for c in read_file }
+
 
 # %% -------------------------------- FUNC.3 -------------------------------- #
 '''  func3: 2 punti
-Si definisca una funzione func3(a_list) che riceve in ingresso una lista
-di numeri ed opera su di essa (ossia, provocando side-effect) rimuovendo tutti
-gli elementi uguali al massimo e al minimo.
-La funzione deve restituisce la differenza fra la lunghezza iniziale e la
-lunghezza finale della lista.
+Si definisca una funzione func3(a_list) che:
+  - Riceve in ingresso una lista di numeri ed opera su di essa rimuovendo tutti gli elemen    ti uguali al massimo e al minimo.
+ 
+La funzione deve restituisce:
+  - La differenza fra la lunghezza iniziale e la lunghezza finale della lista.
 
 Esempio:
     se a_list = [3, 12, -3, 4, 6, 12]
-    dopo la chiamata a func3(a_list) si ha che
-    a_list = [3, 4, 6]
+    func3(a_list)
+      a_list = [3, 4, 6]
     e la funzione restituisce 3.
 
 IMPORTANTE: la lista `a_list` deve risultare cambiata alla fine
@@ -103,35 +106,39 @@ dell'esecuzione della funzione.
 '''
 
 def func3(a_list):
-    # Inserire qui il proprio codice
-    pass
-
+  M = max(a_list)
+  m = min(a_list)
+  l = len(a_list)
+  
+  a_list[:] = [n for n in a_list if n != M and n != m]
+  return l - len(a_list) 
 # %% -------------------------------- FUNC.4 -------------------------------- #
 """ func4: 6 punti
-Si definisca una funzione func4(input_filepath, output_filename) che
-riceve in ingresso due percorsi a file:
-  - Il file `input_filepath` contiene una sequenza di parole, ossia stringhe
-    separate da spazi, tabulazioni o invii a capo.
-  - Il file `output_filename` indica dove salvare un nuovo file di testo,
-    i cui contenuti sono specificati di seguito.
-Il file in output deve contenere tutte le parole presenti in
-`input_filename`, ripetute una sola volta e organizzate in righe nel modo
-seguente.
+Si definisca una funzione func4(input_filepath, output_filename) che:
 
-Le righe nel file di output sono in ordine alfabetico decrescente.
-All'interno di ogni riga, le parole
-  - hanno la stessa lettera iniziale, senza distinzione fra maiuscole e
-    minuscole;
-  - sono separate da uno spazio;
-  - sono ordinate in base alla loro lunghezza e, in caso di pari
-    lunghezza, in base all'ordine alfabetico, senza distinzione fra
-    maiuscole e minuscole. Nel caso in cui nessuno dei criteri sin qui
-    forniti distingua le parole, quelle coincidenti devono essere
-    disposte secondo ordinamento lessicografico (ovverosia, si tiene conto
-    della differenza tra lettere maiuscole e minuscole solo in ultima
-    istanza).
+  - Riceve in ingresso due percorsi a file:
+    - Il file `input_filepath` contiene una sequenza di stringhe separate da spazi, tabulazioni o invii a capo.
+    - Il file `output_filename` indica dove salvare un nuovo file di testo,
+      i cui contenuti sono specificati di seguito:
+        - Il file in output deve contenere tutte le parole presenti in
+          `input_filename`, ripetute una sola volta e organizzate in righe nel modo
+          seguente:
 
-La funzione deve restituire il numero di righe scritte nel file
+            Le righe nel file di output sono in ordine alfabetico decrescente.
+            All'interno di ogni riga, le parole:
+              - Hanno la stessa lettera iniziale, senza distinzione fra maiuscole e
+                minuscole;
+              - Sono separate da uno spazio;
+              - Sono ordinate in base alla loro lunghezza e, in caso di pari
+                lunghezza, in base all'ordine alfabetico, senza distinzione fra
+                maiuscole e minuscole. 
+              - Nel caso in cui nessuno dei criteri sin qui 
+                forniti distingua le parole, quelle coincidenti devono essere
+                disposte secondo ordinamento lessicografico (ovverosia, si tiene conto
+                della differenza tra lettere maiuscole e minuscole solo in ultima
+                 istanza).
+
+ La funzione deve restituire il numero di righe scritte nel file
 `output_filename`.
 
 Esempio:
@@ -146,10 +153,7 @@ cat Condor
 baT bat
 """
 
-def func4(input_filename, output_filename):
-    # Inserire qui il proprio codice
-    pass
-
+def func4(input_filename, output_filename)
 # %% -------------------------------- FUNC.5 -------------------------------- #
 """ func5: 8 punti
 Si definisca una funzione func5(imagefile, output_imagefile, color) che riceve
