@@ -121,7 +121,7 @@ def test_func2_3():
 def do_func3_tests(ID, length, chars, expected):
     input_filename  = f'func3/in_0{ID}.txt'
     output_filename = f'func3/out_0{ID}.txt'
-    expected_filename = f'func3/exp_0{ID}.txt'
+    expected_filename = f'func3/out_0{ID}.txt'
 
     # remove the previous output each time if it is there
     if os.path.exists(output_filename):
@@ -137,7 +137,7 @@ def test_func3_1(run=True):
     '''
     input_filename = 'func3/in_01.txt'
     ouput_filename = 'func3/out_01.txt'
-    expected_filename = 'func3/exp_01.txt'
+    expected_filename = 'func3/out_01.txt'
     length = 5
     chars = 'asd'
     expected = ['hippopotamus', 'elephant', 'cobra', 'horse', 'panda', 'snake']
@@ -152,7 +152,7 @@ def test_func3_2(run=True):
     '''
     input_filename = 'func3/in_02.txt'
     ouput_filename = 'func3/out_02.txt'
-    expected_filename = 'func3/exp_02.txt'
+    expected_filename = 'func3/out_02.txt'
     length = 8
     chars = 'qwerty'
     expected = ['chronologies', 'annuitants', 'bridgeport', 'precluding', 'sauerkraut', 'cutworms', 'speculum', 'subfloor']
@@ -167,7 +167,7 @@ def test_func3_3(run=True):
     '''
     input_filename = 'func3/in_03.txt'
     ouput_filename = 'func3/out_03.txt'
-    expected_filename = 'func3/exp_03.txt'
+    expected_filename = 'func3/out_03.txt'
     length = 2
     chars = 'aiu'
     expected = ['psychologically', 'mephistopheles', 'modifications', 'apotheosizes', 'midwesterner', 'forewarning', 'magnetising', 'mellifluous', 'sulfonamide', 'altercates', 'deficiency', 'fascinator', 'cufflinks', 'euthenics', 'inserting', 'prompting', 'rewriting', 'brasilia', 'cinching', 'gnarling', 'harpists', 'chacers', 'triadic', 'viaduct', 'geisha', 'aires', 'scite']

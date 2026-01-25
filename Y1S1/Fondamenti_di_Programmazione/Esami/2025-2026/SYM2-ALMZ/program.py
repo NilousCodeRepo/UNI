@@ -49,9 +49,30 @@ Es: se dai due file dic1 e dic2 sono generati i dizionari
     la funzione deve ritornare il dizionario {'a':'bue-cane'}.
 
 """
-def func1 (dict1, dict2):
-    pass
 
+def read_dict(file):
+    D = {}
+    with open(file, mode='r') as F:
+        for lines in F:
+            words = lines.split()
+            if len(words) == 2:
+                k,v = words 
+                D[k] = v
+    return D
+
+def func1 (dict1, dict2):
+    D1 = read_dict(dict1)
+    D2 = read_dict(dict2)
+    D3 = {}
+
+    for k,v in D1.items():
+        if k in D2:
+            v2 = D2[k]
+            if v <= v2:
+                D3[k] = v + '-' + v2
+            else:
+                D3[k] = v2 + '-' + v
+    return D3
 #%% ----------------------------------- FUNC4 ------------------------- #
 """ func2: 6 punti
 Si scriva una funzione func2(input_file, output_file) che riceve come argomenti
@@ -79,11 +100,26 @@ Si apra 'func2/input_1.txt per vedere l'input e
 """
 
 def func2(input_file, output_file):
-    pass
-    # completa il codice della funzione
+    l = []
+    w = []
 
+    counter = 0
+    
+    with open(input_file, mode='r') as IF:
+        for lines in IF.readlines():
+            lines = lines.split(",")
 
-# print(func2('func2/input_1.txt','func2/output_1.txt'))
+            w = [int(n) for n in lines] 
+            l.append(w)
+            counter += len(w)
+    
+    with open(output_file, mode='w') as OF:
+        for line in l:
+            OF.write(str(line)+'\n')
+
+    return counter
+
+#print(func2('func2/input_1.txt','func2/output_1.txt'))
 # print(func2('func2/input_2.txt','func2/output_2.txt'))
 # print(func2('func2/input_3.txt','func2/output_3.txt'))
 
@@ -108,11 +144,22 @@ Esempio: func3('func3/in_01.txt', 'func3/out_01.txt', 5, 'asd')
 """
 
 def func3(file_in : str, file_out: str, length:int, chars:str) -> list[str]:
-    pass
-    # completa il codice della funzione
+    l = [] 
 
+    with open(file_in, mode='r') as FI:
+        for lines in FI:
+            words = lines.split()
+            for el in words:
+                if len(el) >= length:
+                    if any(c in chars for c in el):
+                        l.append(el)
+    l = sorted(l, key = lambda x: (-len(x),x))
 
-# print(func3('func3/in_01.txt', 'func3/out_01.txt', 5, 'asd')) # ['hippopotamus', 'elephant', 'cobra', 'horse', 'panda', 'snake']
+    with open(file_out, mode = 'w') as OF:
+        for el in l:
+            OF.write(str(el) + " ");
+
+    return l
 
 # ---------------------------- FUNC 4 ---------------------------- #
 '''
@@ -133,17 +180,36 @@ quantità di numeri letti da textfile_in.
 Esempio:
 se il file textfile_in contiene la riga
 -23.5 17 -141 +322.7 -3227
+
 Nel file textfile_out la funzione deve scrivere la riga
 -3227, +322.7, -141, -23.5, 17
 e tornare il valore 5
 '''
 
+    
 def func4(textfile_in, textfile_out):
-    pass
-    # completa il codice della funzione
 
+    def criterio(stringa):
+        N = 0
 
-# print(func4('func4/input_1.txt', 'func4/output_1.txt')) # 5
+        for c in stringa:
+            if c.isdigit():
+                N += 1
+        return -N, float(stringa)
+    
+    l = []
+    counter = 0
+    with open(textfile_in, mode = 'r') as IF:
+        l = IF.read().split()
+        #l = [int(num) if num.isdigit() else float(num) for num in l]
+        l = sorted(l, key = criterio)
+    counter += len(l)
+    
+    with open(textfile_out, mode = 'w') as OF:
+        for el in l:
+            OF.write(str(el) + " ")
+    
+    return counter
 
 # ---------------------------- FUNC 5 ---------------------------- #
 
@@ -156,6 +222,7 @@ Si definisca la funzione func5(filein) che riceve come argomento
 e che ritorna la matrice trasposta rispetto alla diagonale secondaria,
 ovvero quella che va dall'elemento in alto a destra a quello in basso
 a sinistra. La matrice da restituire e' rappresentata come lista di liste.
+
 Trasposta = matrice riflessa rispetto alla diagonale.
 
 Esempio:
@@ -163,6 +230,7 @@ se il file filein contiene la matrice
 1 2 3 4
 5 6 7 8
 9 10 11 12
+
 la funzione dovrà tornare la matrice riflessa rispetto alla diagonale 4-9,
 come lista di liste
 [[12, 8, 4],
@@ -171,8 +239,31 @@ come lista di liste
  [ 9, 5, 1]]
 '''
 def func5(input_filename):
-    pass
-    # completa il codice della funzione
+    l = []
+    with open(input_filename, mode = 'r') as IF:
+        for lines in IF:
+            lines = lines.split()
+            l.append(lines)
+    
+    m = []
+    for el in l:
+        m.append(el)
+    
+    L = len(m[0])
+    A = len(m)
 
+    trasposta = []
+
+    for y in range(L):
+        riga = []
+
+        for x in range(A):
+            riga.append(m[A-x-1][L-y-1])
+        
+        trasposta.append(riga)
+    
+    return trasposta
+
+print(func5('func5/in_1.txt'))
 
 # ---------------------------- EOF ---------------------------- #

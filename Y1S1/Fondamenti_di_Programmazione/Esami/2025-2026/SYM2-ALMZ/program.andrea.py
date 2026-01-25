@@ -162,32 +162,34 @@ Esempio: func3('func3/in_01.txt', 'func3/out_01.txt', 5, 'asd')
 """
 
 def func3(file_in : str, file_out: str, length:int, chars:str) -> list[str]:
-    pass
     def criterio(parola):
         return -len(parola), parola
-    # completa il codice della funzione
-    parole = leggi_parole(file_in)
-    '''
-    parole_giuste = [ parola for parola in parole
-                      if len(parola)>=length and 
-                      any( c in parola for c in chars )
-                    ]
-    '''
+  
     parole_giuste = []
-    for parola in parole:
+   
+    parole = leggi_parole(file_in)
+    
+   
+   for parola in parole:
         if len(parola)>=length and esiste_carattere(chars, parola):
             parole_giuste.append(parola)
+
     parole_giuste.sort(key=criterio)
+   
     with open(file_out, mode='w', encoding='utf8') as FOUT:
         FOUT.write(' '.join(parole_giuste)+'\n')
+  
     return parole_giuste
 
 def leggi_parole(filename):
     with open(filename, encoding='utf8') as FIN:
         testo = FIN.read()
+    
     nonalfa = { c for c in set(testo) if not c.isalpha() }
+    
     for c in nonalfa:
         testo = testo.replace(c, ' ')
+    
     return testo.split()
 
 
@@ -232,16 +234,15 @@ def func4(textfile_in, textfile_out):
             if c.isdigit():
                 N += 1
         return -N, float(stringa)
-    pass
-    # completa il codice della funzione
+    
     numeri = leggi_numeri(textfile_in)
     numeri.sort(key=criterio)
+    
     with open(textfile_out, mode='w', encoding='utf8') as FOUT:
         print(*numeri, sep=', ', file=FOUT)
     return len(numeri)
 
 def leggi_numeri(filename):
-    #return ['-23.5', '17', '-141', '+322.7', '-3227']
     with open(filename, encoding='utf8') as FIN:
         return FIN.read().split()
 
