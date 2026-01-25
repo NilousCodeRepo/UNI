@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 # -*- coding: utf-8 -*-
 
 """
@@ -224,8 +224,11 @@ expected   = {'P': 6, 'L': 8, 'C': 6, 'S': 10}
 def func6(text : str) -> dict[str,int]:
     pass
     parole = text.upper().split()
+    
     iniziali = set(p[0] for p in parole)
+
     D = dict.fromkeys(iniziali,0)
+    
     for p in parole:
         for c in iniziali:
             if c not in p:

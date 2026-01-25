@@ -18,9 +18,9 @@ I ragazzi/e con DSA devono raggiungere almeno 15
 Attenzione! DEBUG=True nel grade.py per visualizzare la stack trace degli errori.
 """
 
-nome       = "NOME"
-cognome    = "COGNOME"
-matricola  = "MATRICOLA"
+nome       = "T"
+cognome    = "C"
+matricola  = "0000000"
 
 # ----------------------------------- EX.1 ----------------------------------- #
 
@@ -51,8 +51,6 @@ Es: se dai due file dic1 e dic2 sono generati i dizionari
 """
 def func1 (dict1, dict2):
     pass
-    # completa il codice della funzione
-
 
 #%% ----------------------------------- FUNC4 ------------------------- #
 """ func2: 6 punti

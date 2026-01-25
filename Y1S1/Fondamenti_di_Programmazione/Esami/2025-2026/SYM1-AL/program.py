@@ -12,9 +12,9 @@ Per ottenere il punteggio esegui il file grade.py contenuto nella cartella.
 Per superare la simulazione e' sufficiente ottenere un punteggio maggiore o uguale a 18.
 """
 
-nome       = "F"
-cognome    = "L"
-matricola  = "123456"
+nome       = "T"
+cognome    = "C"
+matricola  = "0000000"
 
 ################################################################################
 ################################################################################
@@ -41,12 +41,14 @@ Esempio: se a_dict = {'a':['a','barbagianni','c'], 'b':['a','bifolco'], 'c':['a'
   'bifolco' che contiene la word 'b'.
 '''
 def func1(a_dict : dict[str,list[str]], word : str) -> int :
-    # scrivi qui il tuo codice
-    pass
-
-# a = {'a':['a','barbagianni','c'], 'b':['a','bifolco'], 'c':['a','c']}
-# print(func1(a, 'b')) # 2
-# print(a) # {'c': ['a', 'c']}
+    counter = 0
+    
+    for k,w in list(a_dict.items()):
+        for el in range(len(w)):
+            if word in w[el]:
+                counter += 1
+                del(a_dict[k])
+    return counter 
 
 ################################################################################
 # %% -------------------------------- FUNC.2 --------------------------------- #
@@ -77,11 +79,13 @@ e gli elementi a distanza 0 dall'inizio e dalla fine sono "b" e "a".
 
 
 def func2(D : dict[int, list[str]]) -> list[str]:
-    # scrivi qui il tuo codice
-    pass
+    #TODO: ordina la lista e poi ritorna +K e -K
+    l = []
 
-# D = {4: ["c", "h", "f", "g", "e"], 2: ["a", "z", "b", "w"], 0: ["a", "b", "a"]}
-# print(func2(D)) # [("c","h"), ("b","w"), ("b","a")]
+    for k,v in D.items():
+        l.append( (sorted(v, reverse=True)[k],sorted(v, reverse=True)[-k-1]) )
+    
+    return l
 
 ################################################################################
 # %% -------------------------------- FUNC.3 --------------------------------- #
@@ -107,11 +111,7 @@ Per convertire caratteri in codici ascii si puo' usare la funzione ord().
 '''
 
 def func3(strList : list[str]) -> list[int]:
-    # scrivi qui il tuo codice
-    pass
-
-# strList = ["monkey", "cat", "panda", "boy", "alligator"]
-# print(func3(strList)) # [959, 659, 516, 330, 312]
+    return [sum(ord(c) for c in s) for s in sorted(strList, key= lambda x: (-len(x),x))]
 
 ################################################################################
 # %% ----------------------------------- FUNC.4 ------------------------------ #
@@ -121,9 +121,11 @@ def func3(strList : list[str]) -> list[int]:
 Si definisca una funzione func4(string_list1, string_list2) che prende
 in ingresso due liste di stringhe e restituisce una nuova lista di
 stringhe.
+
 La nuova lista è costituita da tutte quelle stringhe presenti in una
 delle due liste in ingresso che contengono come una sottostringa
 almeno una stringa dell'altra lista.
+
 La lista risultante deve essere ordinata per numero di caratteri
 decrescente, in caso di parità, in ordine alfabetico.
 
@@ -140,14 +142,21 @@ Esempio: se string_list1=['shop', 'park', 'elichopter', 'cat', 'elephant'] e
 '''
 
 def func4(string_list1 : list[str], string_list2 : list[str]) -> list[str]:
-    # INSERT HERE YOUR CODE
-    pass
+    l,l1 = [],[]
+    c = ""
+    for word in string_list1:
+        if any(c in word for c in string_list2):
+            l.append(word)
+   
+  #  for word in string_list1:
+  #      for chars in word:
+  #          if c in word:
+  # 
+    for word in string_list2:
+        if any(c in word for c in string_list1):
+            l1.append(word)
 
-
-# string_list1=['shop', 'park', 'elichopter', 'cat', 'elephant']
-# string_list2=['ark', 'contact', 'hop', 'mark']
-# print(func4(string_list1, string_list2)) # ['elichopter','park', 'shop']
-
+    return sorted(l + l1, key=lambda x: (-len(x), x))
 ################################################################################
 # %% -------------------------------- FUNC.5 --------------------------------- #
 ################################################################################
@@ -179,11 +188,13 @@ e il baricentro risultante dei 3 punti è: (0.667, 0.0)
 
 from math import sqrt
 def func5(points : list[tuple[int,int]]) -> tuple[float,float]:
-    # scrivi qui il tuo codice
-    pass
-
-# points = [(2, 2), (-1, 1), (3, 0), (-3, -2), (2, -1)],
-# print(func5(points)) # (0.667, 0.0)
+   
+    distanze = [sqrt(x**2 + y**2) for x,y in points]
+   
+    points   = [p for _,p in sorted(zip(distanze,points),reverse=True)][:3]
+    
+    return (round(sum(x for x,_ in points)/3, 3),
+            round(sum(y for _,y in points)/3, 3))
 
 ################################################################################
 # #%% ---------------------------- FUNC.6 ------------------------------------ #
@@ -192,8 +203,10 @@ def func5(points : list[tuple[int,int]]) -> tuple[float,float]:
 Func 6: 4 punti
 
 Si definisca la funzione func6(text) che riceve come argomento:
+
 - text: una stringa formata da parole separate da spazi
 e che ritorna un dizionario che ha:
+
   - come chiavi la lettera iniziale delle parole presenti, maiuscola
   - come valore il numero di parole che non contengono quella lettera
     ignorando la differenza tra minuscole e maiuscole
@@ -204,11 +217,32 @@ expected   = {'P': 6, 'L': 8, 'C': 6, 'S': 10}
 '''
 
 def func6(text : str) -> dict[str,int]:
-    pass
+#    text = text.split()
+#    
+#    l = [l for i in text for l in i[0]]
+#    
+#    D = {k:0 for k in l if k.isupper()}
+#
+#    for i in text:
+#        for k in D.keys():
+#            if k not in i:
+#                D[k] += 1
+#
+#    return D
+    parole = text.upper().split()
+    
+    iniziali = set(p[0] for p in parole)
 
+    D = dict.fromkeys(iniziali,0)
+    
+    for p in parole:
+        for c in iniziali:
+            if c not in p:
+                D[c] += 1
+    return D
 
-#text = 'sOtto lA panca La caPra Canta Sopra LA Panca La CaPra crepa'
-#print(func6(text)) # {'P': 6, 'L': 8, 'C': 6, 'S': 10}
+text = 'sOtto lA panca La caPra Canta Sopra LA Panca La CaPra crepa'
+print(func6(text)) # {'P': 6, 'L': 8, 'C': 6, 'S': 10}
 
 ################################################################################
 ################################################################################

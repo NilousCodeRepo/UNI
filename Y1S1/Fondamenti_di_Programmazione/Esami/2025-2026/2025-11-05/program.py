@@ -417,29 +417,56 @@ NOTA: NON  definite la funzione ricorsiva internamente a ex2() altrimenti non pa
 
 NOTA: consigliamo fortemente di dividere l'esercizio in sottoproblemi dividendo in funzioni per ogni sottoproblema.
 """
-def extract_nums(nums: list):
-    max_nums = {}
-    for el in nums:
-        max_nums[el] = max_nums.get(el, 0) + 1
-    return max_nums 
+#def extract_values(values: list):
+#    M = {}
+#    for el in values:
+#        M[el] =  M.get(el, 0) + 1
+#    return M 
+#    
+#def update_dict(dictionary):
+#    #estrai i values in una lista
+#    #leva un elemento
+#    #ritorna il dict come i risultato aggiornati
+#    for k,v in dictionary.items():
+#        dictionary[k] = dictionary[k]-1
+#
+#    return dictionary
 
-def extract_oper(oper: list):
-    max_oper = {}
-    
-    for el in oper:
-        max_oper[el] = max_oper.get(el, 0) + 1
-    return max_oper 
-    
-def ex2(nums, oper):
-    max_allowed_nums = extract_nums(nums)
-    max_allowed_oper = extract_oper(oper)
-    
-    return 0
+def ex2(nums, ops):
+
+    if not ops or len(nums) == 1:
+        return { str(x) for x in nums }
+
+    R = set()
+
+    for X in nums:           # scelgo un numero
+       
+        rest_nums = nums.copy()
+        rest_nums.remove(X)
+   
+        for op in ops:       # ed un operatore
+            rest_ops = ops.copy()
+            rest_ops.remove(op)
+            
+            # e per ogni espressione che usa il resto dei numeri e operatori
+            for sol in ex2(rest_nums, rest_ops):
+                R.add(f'{X}{op}{sol}')   # gli aggiungo numero ed operatore
+    return R
+#    max_allowed_nums = extract_values(nums)
+#    max_allowed_oper = extract_values(oper)
+#    
+#    max_allowed_nums = update_dict(max_allowed_nums) 
+#    max_allowed_oper = update_dict(max_allowed_oper)
+#    
+#    if list(max_allowed_nums.values()) <= [0,0] or list(max_allowed_oper.values()) <= [0,0]:
+#        return max_allowed_nums, max_allowed_oper
+#    
+#    return ex2(max_allowed_nums, max_allowed_oper)
 
 nums = [5, 0, 5]
 oper = ['+', '*', '+']
 
-print(ex2(nums, oper))
+ex2(nums, oper)
 ###################################################################################
 if __name__ == '__main__':
     # Place your tests here

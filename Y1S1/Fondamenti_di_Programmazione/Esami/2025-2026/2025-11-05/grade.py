@@ -433,8 +433,8 @@ tests = [
 #    test_func2_1, test_func2_2, test_func2_3,
 #    test_func3_1, test_func3_2, test_func3_3,
 #    test_func4_1, test_func4_2, test_func4_3,
-#    test_func5_1, test_func5_2, test_func5_3,
-#    test_ex1_1,   test_ex1_2,  test_ex1_3,
+##    test_func5_1, test_func5_2, test_func5_3,
+##    test_ex1_1,   test_ex1_2,  test_ex1_3,
 #    test_ex2_1,    test_ex2_2, test_ex2_3,
 ]
 
