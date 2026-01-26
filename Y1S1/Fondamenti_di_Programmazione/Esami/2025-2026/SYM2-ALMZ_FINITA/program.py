@@ -263,7 +263,4 @@ def func5(input_filename):
         trasposta.append(riga)
     
     return trasposta
-
-print(func5('func5/in_1.txt'))
-
 # ---------------------------- EOF ---------------------------- #

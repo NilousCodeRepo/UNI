@@ -12,9 +12,9 @@ Per ottenere il punteggio esegui il file grade.py contenuto nella cartella.
 Per superare la simulazione e' sufficiente ottenere un punteggio maggiore o uguale a 18.
 """
 
-nome = "F"
-cognome = "L"
-matricola = "123456"
+nome = "T"
+cognome = "C"
+matricola = "0000000"
 
 ################################################################################
 ################################################################################
@@ -37,17 +37,30 @@ le liste del dizionario. Il dizionario 'a_dict' viene modificato.
 Esempio:
 a_dict = {'a':['alpha','beta','gamma'], 'b':['axle','zeta']}
 word = 'aura'
+
 a_dict_exp = {'a':['beta','gamma'], 'b':['axle','zeta']}
 expected = 1
 '''
+
 def func1(a_dict: dict[str, list[str]], word: str) -> int:
-    pass
-# a_dict = {'a':['alpha','beta','gamma'], 'b':['axle','zeta']}
-# word = 'aura'
-# a_dict_exp = {'a':['beta','gamma'], 'b':['axle','zeta']}
-# expected = 1
-# print(func1(a_dict, 'aura')) # 1
-# print(a_dict) # {'a':['beta','gamma'], 'b':['axle','zeta']}
+    counter = 0
+   
+    first = word[0]
+    last = word[len(word)-1]
+    
+    b_dict = a_dict.copy()
+
+    for k in b_dict.keys():
+        for v in a_dict[k]:
+            if first is v[0] and last is v[len(v)-1]:
+                counter += 1
+                a_dict[k] = [el for el in a_dict[k] if el != v]
+
+    return counter
+
+#a_dict = {'a':['alpha','beta','gamma'], 'b':['axle','zeta']}
+#word = 'aura'
+#print(func1(a_dict, word)) # 1
 
 ################################################################################
 # %% -------------------------------- FUNC.2 --------------------------------- #
