@@ -10,9 +10,9 @@
  2) Assegnare le variabili sottostanti con il tuo
     NOME, COGNOME, NUMERO DI MATRICOLA
 """
-nome       = "NOME"
-cognome    = "COGNOME"
-matricola  = "MATRICOLA"
+nome       = "T"
+cognome    = "C"
+matricola  = "0000000"
 
 ################################################################################
 """
@@ -52,18 +52,16 @@ expected: ['trepapere', 'unosogliole']
 '''
 
 def func1(D1 : dict[str,int], D2 : dict[int,int], D3 : dict[int,str] ) -> list[str]:
-    pass
-    ## Scrivi qui il tuo codice
+    l = []
+    for k1,v1 in D1.items():
+        if v1 in D2:
+            v2 = D2[v1]
+            if v2 in D3:
+                l.append(k1 + D3[v2])
+   
+    return sorted(l, key = lambda x: (-len(x),x), reverse = True)
 
-
-"""
 # esempio
-D1 = { 'uno' : 1 , 'due' : 2, 'tre' : 3 }
-D2 = { 1 : 5     , 3 : 12   , 5 : 9 }
-D3 = { 12 : 'papere', 90 : 'cavalli', 5 : 'sogliole' }
-
-print(func1(D1,D2,D3))
-"""
 
 # %% ----------------------------------- FUNC2 ------------------------- #
 ''' func2: 3 punti
@@ -81,17 +79,28 @@ L3 = [ 10, 8, 9, 1, 2, 8, 9, 6, 10 ]
 expected: ({3, 4, 5, 7, 10}, {8, 1, 2, 6})
 '''
 def func2(L1 : list[int], L2 : list[int], L3 : list[int] ) -> tuple[set[int],set[int]]:
-    ## Scrivi qui il tuo codice
-    pass
+    s1 = set(L1) 
+    s2 = set(L2)
+    s3 = set(L3) 
 
+    tutti = s1 | s2 | s3
 
-"""
+    D = dict.fromkeys(tutti,0)
+    
+    for el in s1:
+        D[el] += 1
+
+    for el in s2:
+        D[el] += 1
+    
+    for el in s3:
+        D[el] += 1
+
+    comuni = {k for k,v in D.items() if v == 1}
+    unici = {k for k,v in D.items() if v == 3}
+    return comuni,unici
+
 # esempio
-L1 = [ 1, 2, 6, 2, 8, 4, 9, 1, 7 ]
-L2 = [ 5, 6, 1, 8, 3, 2 ]
-L3 = [ 10, 8, 9, 1, 2, 8, 9, 6, 10 ]
-print(func2(L1,L2,L3))
-"""
 
 # %% ----------------------------------- FUNC3 ------------------------- #
 """ func3: 6 punti

@@ -114,6 +114,7 @@ def func3(strList : list[str]) -> list[int]:
     def conta_vocali(parola):
         vocali = 'aeiouAEIOU'
         return sum(parola.count(v) for v in vocali)
+
     conteggi = [conta_vocali(p.lower()) for p in strList]
     return sorted(conteggi, reverse=True)
 

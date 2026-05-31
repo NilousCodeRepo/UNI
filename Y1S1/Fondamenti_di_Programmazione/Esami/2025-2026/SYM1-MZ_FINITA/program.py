@@ -81,11 +81,23 @@ dictionary = {4: ["a", "b", "c", "de", "fgh"], 2: ["a", "z", "b", "w"], 0: ["a",
 expected = ['fgh', 'de', 'z', 'w', 'c', 'b', 'b', 'a', 'a']
 '''
 def func2(D: dict[int, list[str]]) -> list[str]:
-    pass
+    l = []
+    w = []
 
-# D = {4: ["a", "b", "c", "de", "fgh"], 2: ["a", "z", "b", "w"], 0: ["a", "b"]}
-# print(func2(D)) # ['fgh', 'de', 'z', 'w', 'c', 'b', 'b', 'a', 'a']
+    for k,v in D.items():
+        if k < 0:
+            k = -1*k
 
+        if k == 0:
+            continue 
+        
+        for el in v:
+            if len(el) < k:
+                l.append(el)
+    for el in l:
+        w.append(el) 
+    
+    return sorted(w, key = lambda x: (len(x),x), reverse=True) 
 ################################################################################
 # %% -------------------------------- FUNC.3 --------------------------------- #
 ################################################################################
@@ -101,11 +113,14 @@ a_list = ["monkey", "cat", "panda", "alligator"]
 expected = [4, 2, 2, 1]
 '''
 def func3(strList: list[str]) -> list[int]:
-    pass
+    vocali = "AEIOUaeiou"
+    
+    def conta_vocali(p):
+     return sum( p.count(v) for v in vocali) 
 
-# a_list = ["monkey", "cat", "panda", "alligator"]
-# print(func3(a_list)) # [4, 2, 2, 1]
+    counter = [conta_vocali(p.lower()) for p in strList]
 
+    return sorted(counter, reverse = True)
 ################################################################################
 # %% ----------------------------------- FUNC.4 ------------------------------ #
 ################################################################################
@@ -127,11 +142,12 @@ Esempio:
 
 '''
 def func4(string_list1: list[str], string_list2: list[str]) -> list[str]:
-    pass
+    s3 = set()
+    s3 = set(string_list1)- set(string_list2)
+    
+    s3 = list(s3)
 
-# string_list1 = ['shop', 'park', 'elichopter', 'cat', 'elephant']
-# string_list2 = ['ark', 'contact', 'hop', 'mark', 'shop', 'cat']
-# print(func4(string_list1, string_list2)) # ['park', 'elephant', 'elichopter']
+    return sorted(s3, key = lambda x: ( len(set(x)), x) )
 
 ################################################################################
 # %% -------------------------------- FUNC.5 --------------------------------- #
@@ -187,9 +203,14 @@ Esempio:
 text = 'sOtto lA panca La caPra Canta Sopra LA Panca La CaPra crepa'
 expected   = {'s': 2, 't': 3, 'l': 4, 'p': 6, 'n': 3, 'c': 6, 'r': 4}
 '''
+
+
 def func6(text: str) -> dict[str, int]:
-    pass
+    consonanti = "bcdfghjklmnpqrstvwxyz"
+    text = text.lower()
+
+    return {c : text.count(c) for c in consonanti if text.count(c)}
 
 
-#text = 'sOtto lA panca La caPra Canta Sopra LA Panca La CaPra crepa'
-#print(func6(text)) # {'s': 2, 't': 3, 'l': 4, 'p': 6, 'n': 3, 'c': 6, 'r': 4}
+text = 'sOtto lA panca La caPra Canta Sopra LA Panca La CaPra crepa'
+print(func6(text)) # {'s': 2, 't': 3, 'l': 4, 'p': 6, 'n': 3, 'c': 6, 'r': 4}

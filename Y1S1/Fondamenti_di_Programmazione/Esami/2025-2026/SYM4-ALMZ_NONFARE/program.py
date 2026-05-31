@@ -14,9 +14,9 @@ from nary_tree import NaryTree
  1) Assegnare le variabili sottostanti con il tuo
     NOME, COGNOME, NUMERO DI MATRICOLA
 """
-nome       = "NOME"
-cognome    = "COGNOME"
-matricola  = "MATRICOLA"
+nome       = "T"
+cognome    = "C"
+matricola  = "0000000"
 ################################################################################
 ################################################################################
 ################################################################################
@@ -33,8 +33,17 @@ La funzione deve essere ricorsiva, oppure chiamare una funzione ricorsiva top-le
 ed al suo stesso livello nel file corrente. 
 """
 def ex1(N, P, Q):
-    pass
-    # completa la funzione
+    if N == 0:
+        return 0
+    if N == 1:
+        return 1
+  
+    part_one = P * ex1(N-1,P,Q)
+    part_two = Q * ex1(N-2,P,Q) 
+
+    result = part_one - part_two 
+    
+    return result 
 
 # %% ----------------------------------- EX.2 ----------------------------------- #
 '''

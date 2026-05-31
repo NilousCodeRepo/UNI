@@ -1,6 +1,4 @@
-#include <stdio.h>
-
-int main(int argc, char** argv)
+int main()
 {
     int array[] = {10,9,3,2,1};
     
@@ -17,13 +15,6 @@ int main(int argc, char** argv)
         array[prev_index + 1] = key;
     }
     
-    for(int x = 1; x <= 5; ++x)
-    {
-    
-        printf("ARRAY[%d]: %d\n", x, array[x]);
-
-    }
-
 	return 0;
 }
 
