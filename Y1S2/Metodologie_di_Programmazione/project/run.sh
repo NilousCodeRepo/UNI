@@ -11,10 +11,10 @@ fi
 
 RUN_OPT=""
 
-SOURCE_PATH="src/*.java"
-CLASS_PATH="cls"
+SOURCE_PATH=src/*/*.java
+CLASS_PATH=cls
 
-MOD_PATH="--module-path ${JAVA_FX_PATH}" 
+MOD_PATH="--module-path ${JAVA_FX_PATH}"
 MOD_OPT="--add-modules javafx.controls"
 
 javac ${COMP_OPT} ${MOD_PATH} ${MOD_OPT} -d ${CLASS_PATH} ${SOURCE_PATH}

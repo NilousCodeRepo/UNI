@@ -18,3 +18,12 @@
     -fx-background-radius: 5; /*rounded corners */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,2);
 }
+
+.quit_button{
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5; /*rounded corners */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,2);
+}

@@ -1,4 +1,4 @@
-import javafx.application.Application;
+package View;
 
 import javafx.stage.Stage;
 
@@ -8,16 +8,25 @@ import javafx.scene.layout.VBox; // usalo per roba tipo liste di bottoni uno sot
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
-public class UNO extends Application
+public class Window
 {
-    @Override
-    public void start(Stage stage)
+    private StackPane CreatePane(String nameOfPane)
     {
-        StackPane root = new StackPane();
-        root.getStyleClass().add("root");//creating css class: root
-        
-        Scene scene = new Scene(root, 400, 300);
-        
+        StackPane pane = new StackPane();
+        pane.getStyleClass().add(nameOfPane);//creating css class: root
+        return pane;
+    }
+    
+    private Scene CreateScene(StackPane pane, int width, int height)
+    {
+        Scene scene = new Scene(pane, width, height);
+        return scene;
+    }
+
+    public void CreateWindow(Stage stage)
+    {
+        StackPane CyberPunk = CreatePane("root");
+
         int spacing_px = 5;
         VBox start_menu = new VBox(spacing_px);
         start_menu.getStyleClass().add("start_menu");
@@ -31,22 +40,16 @@ public class UNO extends Application
         //adding buttons to button stack
         start_menu.getChildren().addAll(start_button, quit_button);
         
-        //drawing on the principale panel the buttons
-        root.getChildren().add(start_menu);
-    
-        scene.getStylesheets()
+        //drawing on the principal panel of the buttons
+        CyberPunk.getChildren().add(start_menu);
+
+        Scene s = CreateScene(CyberPunk, 400, 300);
+        s.getStylesheets()
              .add(
-                    getClass().getResource("styles/start_menu.css").toExternalForm()
+                    getClass().getResource("../styles/start_menu.css").toExternalForm()
                 );
-        
-        stage.setTitle("UNO the GAME");
-        stage.setScene(scene);
-        stage.show();
-    }
 
-    public static void main(String[] args)
-    {
-        launch(args);
+        stage.setScene(s);
     }
+    
 }
-
