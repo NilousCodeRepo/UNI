@@ -1,52 +1,37 @@
 package View;
 
-import javafx.stage.Stage;
-
-import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;//usalo per la root, mette gli elementi uno sopra l'altro
-
-public class Window
+/*protected class Window
 {
     private StackPane CreatePane(String nameOfPane)
     {
         StackPane pane = new StackPane();
-        pane.getStyleClass().add(nameOfPane);//creating css class: root
+
+        if(nameOfPane != null)
+            pane.getStyleClass().add(nameOfPane);//creating css class: pane
+
         return pane;
     }
     
-    private Scene CreateScene(StackPane pane, int width, int height)
+    private Scene CreateScene(StackPane pane, int height, int width, String css_path)
     {
-        Scene scene = new Scene(pane, width, height);
+        Scene scene = new Scene(pane, height, width);
+        
+        if(css_path != null)
+            scene.getStylesheets().add(
+                    getClass().getResource(css_path).toExternalForm());
+
         return scene;
     }
 
-    public void CreateWindow(Stage stage)
+    public void CreateWindow(Stage stage, int SceneH, int SceneW)
     {
-        StackPane CyberPunk = CreatePane("root");
-
-        int spacing_px = 5;
-        VBox start_menu = new VBox(spacing_px);
-        start_menu.getStyleClass().add("start_menu");
-
-        Button start_button = new Button("START");
-        start_button.getStyleClass().add("start_button");
-
-        Button quit_button = new Button("QUIT");
-        quit_button.getStyleClass().add("quit_button");
-
-        //adding buttons to button stack
-        start_menu.getChildren().addAll(start_button, quit_button);
+        StackPane pane = CreatePane("root");
+        pane.getChildren();//drawing on the principal panel of the buttons
         
-        //drawing on the principal panel of the buttons
-        CyberPunk.getChildren().add(start_menu);
+        Scene scene = CreateScene(pane, SceneH, SceneW, "../styles/start_menu.css");
 
-        Scene s = CreateScene(CyberPunk, 400, 300);
-        s.getStylesheets()
-             .add(
-                    getClass().getResource("../styles/start_menu.css").toExternalForm()
-                );
-
-        stage.setScene(s);
+        stage.setScene(scene);
     }
     
 }
+*/

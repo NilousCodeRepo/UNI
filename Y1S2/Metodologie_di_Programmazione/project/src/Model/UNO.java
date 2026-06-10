@@ -1,22 +1,30 @@
+//TODO(nilou): Make a button that creates a button using the MVC communication protocol
 package Model;
 
-import View.Window;
+//the stage it's best to initialize in the Model, they are not GUI yet, and javaFX requires it to be in the "start" thread
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+
+//import View.Window;
+//import View.VButtons;
+import View.MainView;
+
+import Controller.Controller;
 
 public class UNO extends javafx.application.Application
 {
     @Override
     public void start(javafx.stage.Stage stage)
     {
-        Window w = new Window();
-        w.CreateWindow(stage);
-
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("UNO the GAME");
         stage.show();
     }
 
     public static void main(String[] args)
     {
-        //TODO(nilou): check things like OS, java version, javafx version
+        //here we  place some "out of the purpose of the application controls". This is just an example
         String OS = System.getProperty("os.name");
         String OSVersion = System.getProperty("os.version");
         String OSArch = System.getProperty("os.arch");
