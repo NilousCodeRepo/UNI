@@ -1,23 +1,36 @@
+//THIS IS JUST THE APP LAUNCHER
+
 //TODO(nilou): Make a button that creates a button using the MVC communication protocol
 package Model;
 
-//the stage it's best to initialize in the Model, they are not GUI yet, and javaFX requires it to be in the "start" thread
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
-
-//import View.Window;
-//import View.VButtons;
 import View.MainView;
-
-import Controller.Controller;
+import Controller.MainController;
 
 public class UNO extends javafx.application.Application
 {
+    private final IntegerProperty pressCount = new SimpleIntegerProperty(0);
+
+    public void incrementPressCount() {
+        pressCount.set(pressCount.get() + 1);
+    }
+
+    public IntegerProperty pressCountProperty() {
+        return pressCount;
+    }
+
     @Override
     public void start(javafx.stage.Stage stage)
     {
-        stage.initStyle(StageStyle.UNDECORATED);
+        UNO model = new UNO();
+        MainView view = new MainView();
+
+        new Controller.MainController(view, model);
+
+        //the stage it's best to initialize in the Model, they are not GUI yet, and javaFX requires it to be in the "start" thread
+        stage.setScene( view.getScene( view.getRoot(), 400,300 ) );
         stage.setTitle("UNO the GAME");
         stage.show();
     }
