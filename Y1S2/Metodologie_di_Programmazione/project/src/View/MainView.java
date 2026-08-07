@@ -26,9 +26,12 @@ public class MainView
     }
 
     public void setInitialButtonHandler(EventHandler<ActionEvent> handler) {
-        // remove old, create a new one with handler (or you could keep reference internally)
-        root.getChildren().removeIf(n -> n.getUserData() != null && n.getUserData().equals("initial"));
-        var btn = buttonsFactory.createButton("O BOTTON", handler);
+
+        root.getChildren().
+                removeIf(n -> n.getUserData() != null && n.getUserData().equals("initial")
+            );
+
+        Button btn = buttonsFactory.createButton("O BOTTON", handler);
         btn.setUserData("initial");
         root.getChildren().add(btn);
     }

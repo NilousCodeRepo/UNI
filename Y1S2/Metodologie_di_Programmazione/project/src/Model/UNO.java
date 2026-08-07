@@ -1,6 +1,4 @@
 //THIS IS JUST THE APP LAUNCHER
-
-//TODO(nilou): Make a button that creates a button using the MVC communication protocol
 package Model;
 
 import javafx.beans.property.IntegerProperty;
@@ -26,8 +24,7 @@ public class UNO extends javafx.application.Application
     {
         UNO model = new UNO();
         MainView view = new MainView();
-
-        new Controller.MainController(view, model);
+        MainController controller = new MainController(view, model);
 
         //the stage it's best to initialize in the Model, they are not GUI yet, and javaFX requires it to be in the "start" thread
         stage.setScene( view.getScene( view.getRoot(), 400,300 ) );

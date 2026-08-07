@@ -11,10 +11,10 @@ public class MainController
     public final MainView view;
     public final UNO model;
 
-    public MainController(MainView view, UNO model)
+    public MainController(MainView arg_view, UNO arg_model)
     {
-        this.view = view;
-        this.model = model;
+        this.view = arg_view;//quindi this si riferisce all'oggetto
+        this.model = arg_model;
 
         // attach behavior via view API
         EventHandler<ActionEvent> handler = e -> model.incrementPressCount();
